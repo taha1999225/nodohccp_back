@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Tb_user {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  fullname String?
+  company  String?
+  siret  String?
+  password String?
+  address String?
+  phone String?
+  user_active Int? @default(1)
+  
+}
+model Tb_supplier {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  fullname String?
+  siret  String?
+  address String?
+  phone String?
+}
+model Tb_product {
+  id       Int     @id @default(autoincrement())
+  name    String  @unique
+  brand String?
+  id_category  Int?
+  qty_category Int?
+  limit_day Int?
+  alert_day Int?
+  allergene Json?
+  id_supplier Int?
+  id_user Int?
+}
+model Tb_entrance_history {
+  id       Int     @id @default(autoincrement())
+  id_product  Int?
+  consomation_date DateTime
+  id_shift Int?
+  id_user Int?
+}
+model Tb_entrance_history_tb{
+  id       Int     @id @default(autoincrement())
+  hisotry_id  Int?
+  note String?
+  photo String?
+  id_user Int?
+}
+model Tb_product_category{
+ id       Int     @id @default(autoincrement())
+ category_name String?
+}
+model Tb_shift {
+  id       Int     @id @default(autoincrement())
+  shift Int?
+}
+
