@@ -43,6 +43,24 @@ model Tb_product {
   id_supplier Int?
   id_user Int?
 }
+model Tb_correction{
+   id      Int     @id @default(autoincrement())
+  correction String?
+  id_user Int?
+}
+model Tb_history_temperature{
+  id Int @id @default (autoincrement())
+  date DateTime?
+  id_device Int?
+  note String?
+  id_photo String?
+  id_correction Int?
+}
+model Tb_devices{
+  id Int @id @default(autoincrement())
+  name String?
+  id_user Int
+}
 model Tb_entrance_history {
   id       Int     @id @default(autoincrement())
   id_product  Int?
@@ -65,4 +83,56 @@ model Tb_shift {
   id       Int     @id @default(autoincrement())
   shift Int?
 }
+model Tb_zone {
+   id       Int     @id @default(autoincrement())
+  name String?
+  id_user Int?
+}
+model Tb_zone_details {
+  id       Int     @id @default(autoincrement())
+  id_zone Int?
+  id_user Int?
+  department String?
+}
+model Tb_clean_plane {
+  id       Int     @id @default(autoincrement())
+  date  DateTime
+  id_zone Int?
+  id_user Int?
+  
+}
+model Tb_clean_plane_details {
+  id       Int     @id @default(autoincrement())
+  id_clean Int?
+  note String?
+  photo String? 
+}
+model Tb_huile {
+  id       Int     @id @default(autoincrement())
+  date DateTime
+  id_user Int?
+  id_huile_device Int?
+  
+}
+model Tb_huile_device {
+  id       Int     @id @default(autoincrement())
+  name String?
+}
+model Tb_product_delivery{
+  id       Int     @id @default(autoincrement())
+  date DateTime
+  id_supplier Int?
+  photo String?
+  id_user Int?
+  ref String
+  note String
+  id_delivery Int?
+}
+model Tb_scanner {
+  id       Int     @id @default(autoincrement())
+  name String?
+}
+
+
+
 
